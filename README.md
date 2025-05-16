@@ -1,22 +1,21 @@
 # English to German Neural Machine Translation using MarianMT (DL-NLP Project)
 
-This project implements two deep learning models for classifying bird species from audio clips: a custom convolutional neural network (CNN) and a transfer learning approach using EfficientNet_B0. Audio files are converted into Mel-spectrogram images and classified into one of 24 bird species.
+This project implements a transformer-based model for English-to-German neural machine translation, the model was a finetune of a prebuilt transformer model MarianMT by Helsinki-NLP. The models are fine-tuned on a random sample of the combination of OPUS Books and News Commentary datasets, preprocessed with custom filtering. BLEU Scores and TER and evaluated using BLEU and TER (translation error rate) were used for evaluating performance. The fine tuned version showed an increase in BLEU scores of 0.02 (2%) which is considered a solid improvement in the field of Machine Translation.
 
 ## Project Structure
- - main.py , Main File, running it will train and evaluate both models.
- - misc.ipynb , Same code as main.py but in notebook format for easier trialing initially.
+ - main.py , Main File, running it will train and evaluate the MT model.
  - A/ , All Source Code:
-    + cnn_model.py , Custom CNN model Code
-    + data_preproc.py , Contains functions that handle data preprocessing
-    + spec_gen.py , Contains code that converts sound files to mel spectrograms while maintaining folder structure
-    + trans_model.py , Transfer Learning Model Code
-    + utils.py , Contains code for training, testing, and plotting loss curves and confusion matrices
+    + marian.py , Sets up Model and Tokenizer for MarianMT
+    + m2m100.py , Sets up Model and Tokenizer for M2M100 (UNUSED)
+    + preproc.py , Contains functions that handle dataset download and preprocessing
+    + train.py , Contains code for training loop and plotting training curves
+    + utils.py , Contains code for translating batch inputs and evaluation metrics like BLEU and TRE.
 - Datasets/
-    + Sound-Files , Contains the entire dataset in the form of .ogg sound files grouped by species
-    + Spec-Images , Contains the entire dataset in the form of mel spectrogram images grouped by species
-- Results , Used for storing loss curves and confusion matrices pics
+    + final_dataset.pkl , Contains the entire dataset in the form of .pkl file.
+
+- Results , Used for storing loss curves and other images
 - env/
-    + environment.yml , Code to create a new conda env called "BirdCLEF" with all necessary modules
+    + environment.yml , Code to create a new conda env called "DLNLP" with all necessary modules
     + requirements.txt, All needed modules
 - README.md , This file
 
@@ -25,11 +24,14 @@ This project implements two deep learning models for classifying bird species fr
 - pandas
 - matplotlib
 - torch
-- torchvision
-- tqdm
-- librosa
 - scikit-learn
-- timm
+- tqdm
+- transformers
+- datasets
+- sentencepiece
+- sacrebleu
+- evaluate
+- accelerate
 
 ## Instructions
 git clone the repo, go into the project root folder and open terminal.
