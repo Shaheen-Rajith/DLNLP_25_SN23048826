@@ -35,11 +35,11 @@ This project implements a transformer-based model for English-to-German neural m
 
 ## Instructions
 git clone the repo, go into the project root folder and open terminal.
-Runs the follow code to create a new conda environment named "DLNLP" with all necessary module
+Run the following code to create a new conda environment named "DLNLP" with all the necessary modules.
 ```bash
 conda env create -f env/environment.yml
 ```
-Go back to the project root folder and run the following code to train the MarianMT model, obtain loss plots, BLEU and TRE accuracy scores (takes over 1.5 hours on my laptop with an Nvidia GPU)
+Go back to the project root folder and run the following code to train the MarianMT model, obtain loss plots, BLEU and TRE accuracy scores (takes over 2 hours on my laptop with an Nvidia GPU)
 ```bash
 python3 main.py
 ```

@@ -11,7 +11,7 @@ def tokenize(sample, tokenizer, max_length=128):
         source_text,
         text_target=target_text,
         padding="max_length",
-        truncation=True, #maybe
+        truncation=True, 
         max_length=max_length,
     )
     return tokenized

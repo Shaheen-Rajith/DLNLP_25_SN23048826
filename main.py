@@ -46,7 +46,7 @@ train_losses, val_losses = train_model(
     num_epochs=5,
     learning_rate=1e-5,
     batch_size=16,
-    weight_decay = 0.00001
+    weight_decay = 0.001
 )
 
 
@@ -81,13 +81,13 @@ ter_score(model,
 
 # # ======================================================================================================================
 
-bleu_acc_A_train = bleu_score(model, tokenizer, device, data_train.train_test_split(train_size=5000)["train"], selector="marian")
+bleu_acc_A_train = bleu_score(model, tokenizer, device, data_train, selector="marian")
 
 bleu_acc_A_val = bleu_score(model, tokenizer, device, data_val, selector="marian")
 
 bleu_acc_A_test = bleu_score(model, tokenizer, device, data_test, selector="marian")
 
-ter_acc_A_train = ter_score(model, tokenizer, device, data_train.train_test_split(train_size=5000)["train"], selector="marian")
+ter_acc_A_train = ter_score(model, tokenizer, device, data_train, selector="marian")
 
 ter_acc_A_val = ter_score(model, tokenizer, device, data_test, selector="marian")
 
